@@ -65,6 +65,11 @@ H.redo() # a is 4
 
 ## Methods
 
+### Constructor
+
+A `limit` can be passed to the constructor to limit the size of the history. By
+default `limit = 10`.
+
 ### `register(cmd, *args, **kwargs)`
 
 Registers a (inverse) command with the Historian.
@@ -74,11 +79,11 @@ is called on an undo/redo.
 
 ### `undo(n)`
 
-Undoes last `n` commands.
+Undoes last `n` commands. Passing `0` will undo all.
 
 ### `redo(n)`
 
-Redoes last `n` commands.
+Redoes last `n` commands. Passing `0` will redo all.
 
 ### `clear(kinds)`
 
