@@ -15,6 +15,12 @@ for examples.
 
 ## Usage
 
+0. Import:
+
+```
+from historian import Historian
+```
+
 1. Instantiate the Historian:
 
 ```
@@ -91,6 +97,8 @@ and `redo()` methods to another class and the `_undomgr` instance variable. It
 is a simple wrapper around the `Historian` class. For example
 
 ```
+from historian import HistorianMixin
+
 class MyClass(HistorianMixin):
     def __init__(self):
         HistorianMixin.__init__(self)
