@@ -1,1 +1,1 @@
-import historian
+from .historian import Historian, HistorianMixin
