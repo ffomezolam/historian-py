@@ -4,6 +4,7 @@ Undo/redo manager
 """
 
 from collections import deque
+from typing import Optional
 
 class Historian:
     """
@@ -48,7 +49,7 @@ class Historian:
     # repeat ad nauseum
     """
 
-    def __init__(self, limit: int = 10):
+    def __init__(self, limit: Optional[int] = None):
         self._limit = limit
         self._history = {
             "undo": deque(maxlen = limit),
@@ -70,7 +71,9 @@ class Historian:
     def _do(self, kind: str, n: int = 1):
         "Mechanics for undo/redo"
 
-        n = self._limit if not n or abs(n) > self._limit else abs(n)
+        limit = self._limit or len(self._history[kind])
+
+        n = limit if not n or abs(n) > limit else abs(n)
 
         if n > len(self._history[kind]): n = len(self._history[kind])
 
